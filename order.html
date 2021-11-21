@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Website</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navbar Section Starts Here -->
+    <section class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" title="Logo">
+                    <img src="./images/logo.png" alt="Restaurant Logo" class="img-responsive">
+                </a>
+            </div>
+
+            <div class="menu text-right">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="categories.html">Categories</a></li>
+                    <li><a href="foods.html">Food</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="clear-fix"></div>
+        </div>
+    </section>
+    <!-- Navbar Section Ends Here -->
+
+
+    <!-- food search Section Starts Here -->
+    <section class="food-search">
+        <div class="container">
+            <h2 class="text-center text-white">Fill this form to confirm your order.</h2>
+            <form action="#" class="order">
+                <fieldset>
+                    <legend>Selected Food</legend>
+
+                    <div class="food-menu-img">
+                        <img src="./images/menu-pizza.jpg" alt="Pizza" class="img-responsive img-curve">
+                    </div>
+
+                    <div class="food-menu-desc">
+                        <h3>Food Title</h3>
+                        <p class="food-price">$2.3</p>
+
+                        <div class="order-label">Quantity</div>
+                        <input type="number" name="qty" class="input-responsive" 
+                        min=1 value="1" required>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Delivary Details</legend>
+                    <div class="order-label">Full Name</div>
+                    <input type="text" name="full-name" placeholder ="E.g. Jhon Doe" class="input-responsive" required>
+
+                    <div class="order-label">Phone Number</div>
+                    <input type="tel" name="contact" placeholder ="E.g. 9843xxxxxx" class="input-responsive" required>
+
+                    <div class="order-label">Email</div>
+                    <input type="email" name="email" placeholder ="E.g.Jhon@web.com" class="input-responsive" required>
+
+                    <div class="order-label">Address</div>
+                    <textarea style="resize: none;" name="address" rows="10" placeholder="E.g. Street, City, Country" class="input-responsive" required></textarea>
+
+                    <div class="text-center">
+                        <input type="submit" name="submit" value="Confirm Order" class="btn btn-primary">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </section>
+    <!-- food search  Section Ends Here -->
+
+    <!-- social  Section Starts Here -->
+    <section class="social">
+        <div class="container text-center">
+            <ul>
+                <li>
+                    <a href="#">
+                        <img src="https://img.icons8.com/fluent/50/000000/facebook-new.png">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="https://img.icons8.com/fluent/48/000000/instagram-new.png">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="https://img.icons8.com/fluent/48/000000/twitter.png">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <!-- social  Section Ends Here -->
+
+    <!-- footer Section Starts Here -->
+    <section class="footer">
+        <div class="container text-center">
+            <p>All rights reserved. Designed By <a href="#">Advance Learner</a></p>
+        </div>
+    </section>
+    <!-- footer Section Ends Here -->
+
+
+</body>
+</html>
