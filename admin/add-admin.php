@@ -78,7 +78,7 @@
         ";
  
         //3. Executing Query and Saving Data into Datbase
-        $res = mysqli_query($conn, $sql) or die(mysqli_error());
+        $res = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 
         //4. Check whether the (Query is Executed) data is inserted or not and display appropriate message
         if($res==TRUE)
