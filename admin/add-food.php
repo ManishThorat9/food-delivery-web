@@ -5,6 +5,14 @@
         <h1>Add Food</h1>
         <br>
 
+        <?php
+            // if image is not uploaded
+            if(isset($_SESSION['upload'])){
+                echo $_SESSION['upload'];
+                unset($_SESSION['upload']);
+            }
+        ?>
+
         <form action="" method="post" enctype="multipart/form-data">
 
             <table class="tbl-30">
@@ -95,11 +103,103 @@
                         <input type="submit" name="submit" value="Add Food" class="btn-secondary">
                     </td>
                 </tr>
-
-
             </table>
-
         </form>
+
+        <?php
+
+            // check if submit btn is clicked or not
+            if(isset($_POST['submit'])){
+                // add the food in database
+
+                // get data from form
+                $title = $_POST['title'];
+                $description = $_POST['description'];
+                $price = $_POST['price'];
+                $category = $_POST['category'];
+
+                // check the radio btn for featured and active are checked or not
+                if(isset($_POST['featured'])){
+                    $featured = $_POST['featured'];
+                }
+                else{
+                    $featured = 'No'; // setting the default value
+                }
+
+                if(isset($_POST['active'])){
+                    $active = $_POST['active'];
+                }
+                else{
+                    $active = 'No'; // setting the default value
+                }
+
+                // check if image is selected  or not
+                if(isset($_FILES['image']['name'])){
+                    // get the details of the selected image
+                    $image_name = $_FILES['image']['name'];
+
+                    // check the image is selected or not and upload the image if selected
+                    if($image_name != ""){
+                        // image is selected
+                        // rename the image
+                        // get extension of selected image
+                        $ext = end(explode('.', $image_name));
+
+                        // create new name for image
+                        $image_name = "Food-Name-".rand(0000, 9999).".".$ext;
+
+                        // get the source path and destination path
+
+                        $src = $_FILES['image']['tmp_name'];
+
+                        // destination path
+                        $dst = "../images/food/".$image_name;
+
+                        // move image from src to destination
+                        $upload = move_uploaded_file($src, $dst);
+
+                        // check the image is uploaded or not
+                        if($upload==false){
+                            // failed to upload the image 
+                            // redirect to add food page with error msg
+
+                            $_SESSION['upload'] = "<div class='error'>Failed to upload image</div><br>";
+                            header("location:".SITEURL."admin/add-food.php");
+
+                            // stop the process
+                            die();
+                        }
+
+                    }
+
+                }
+                else{
+                    $image_name = "";
+                }
+
+                // insert data in database 
+                // sql query to insert data in database
+                $sql2 = "INSERT INTO tbl_food SET title='$title', description='$description', price='$price', image_name='$image_name', category_id='$category', featured='$featured', active='$active'";
+
+                // execute sql query
+                $res = mysqli_query($conn, $sql2);
+
+                // check query is executed successfully or not
+                if($res == true){
+                    // data inserted succesfully msg and redirect to manage food page
+                    $_SESSION['add'] = "<div class='success'>Food Added Succesfully</div><br>";
+                    header("location:".SITEURL."admin/manage-food.php");
+                }
+                else{
+                    // failed to insert data
+                    $_SESSION['add'] = "<div class='error'>Failed to Add Food...</div><br>";
+                    header("location:".SITEURL."admin/manage-food.php");
+                }
+
+                
+            }
+
+        ?>
 
     </div>
 </div>
