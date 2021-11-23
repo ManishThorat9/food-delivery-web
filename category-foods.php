@@ -1,43 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Website</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <!-- Navbar Section Starts Here -->
-    <section class="navbar">
-        <div class="container">
-            <div class="logo">
-                <a href="index.html" title="Logo">
-                    <img src="./images/logo.png" alt="Restaurant Logo" class="img-responsive">
-                </a>
-            </div>
-
-            <div class="menu text-right">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="categories.html">Categories</a></li>
-                    <li><a href="foods.html">Food</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="clear-fix"></div>
-        </div>
-    </section>
-    <!-- Navbar Section Ends Here -->
+<?php include("partials-front/menu.php");?>
 
 
     <!-- food search Section Starts Here -->
     <section class="food-search text-center">
         <div class="container">
-            <form action="food-search.html" method="post">
-                <input type="search" name="search" placeholder="Search for Food.." required>
-                <input type="submit" value="Search" class="btn btn-primary">
-            </form>
+            <h2>Foods on <a href="#" class="text-white">"Category"</a></h2>
         </div>
     </section>
     <!-- food search  Section Ends Here -->
@@ -46,21 +13,21 @@
     <section class="categories">
         <div class="container">
             <h2 class="text-center">Explore Foods</h2>
-            <a href="category-foods.html">
+            <a href="#">
                 <div class="box-3 float-container">
                     <img src="./images/pizza.jpg" alt="Pizza" class="img-responsive img-curve">
                     <h3 class="float-text text-white">Pizza</h3>
                 </div>
             </a>
 
-            <a href="category-foods.html">
+            <a href="#">
                 <div class="box-3 float-container">
                     <img src="./images/burger.jpg" alt="Pizza" class="img-responsive img-curve">
                     <h3 class="float-text text-white">Burger</h3>
                 </div>
             </a>
 
-            <a href="category-foods.html">
+            <a href="#">
                 <div class="box-3 float-container">
                     <img src="./images/momo.jpg" alt="Pizza" class="img-responsive img-curve">
                     <h3 class="float-text text-white">Momo</h3>
@@ -173,39 +140,4 @@
     </section>
     <!-- food menu  Section Ends Here -->
 
-
-    <!-- social  Section Starts Here -->
-    <section class="social">
-        <div class="container text-center">
-            <ul>
-                <li>
-                    <a href="#">
-                        <img src="https://img.icons8.com/fluent/50/000000/facebook-new.png">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="https://img.icons8.com/fluent/48/000000/instagram-new.png">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="https://img.icons8.com/fluent/48/000000/twitter.png">
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </section>
-    <!-- social  Section Ends Here -->
-
-    <!-- footer Section Starts Here -->
-    <section class="footer">
-        <div class="container text-center">
-            <p>All rights reserved. Designed By <a href="#">Advance Learner</a></p>
-        </div>
-    </section>
-    <!-- footer Section Ends Here -->
-
-
-</body>
-</html>
+<?php include("partials-front/footer.php");?>
