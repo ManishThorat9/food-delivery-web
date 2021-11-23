@@ -68,7 +68,7 @@
         <div class="container">
             <h2 class="text-center">Food Menu</h2>
 
-            <div class="food-menu-box">
+            <!-- <div class="food-menu-box">
                 <div class="food-menu-img">
                     <img src="./images/menu-pizza.jpg" alt="pizza" class="img-responsive img-curve">
                 </div>
@@ -81,82 +81,51 @@
                     <br>
                     <a href="order.html" class="btn btn-primary">Order Now</a>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="./images/menu-burger.jpg" alt="burger" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Smoky Burger</h4>
-                    <p class="food-price">$2.3</p>
-                    <p class="food-detail">
-                        Made with Italian Sauce, Chicken, and organice vegetables.
-                    </p>
-                    <br>
-                    <a href="order.html" class="btn btn-primary">Order Now</a>
-                </div>
-            </div>
+            <?php 
+            
+                // sql query to get data from table
+                $sql2 = "SELECT * FROM tbl_food WHERE featured='Yes' AND active='Yes' LIMIT 6";
+                // execute sql query 
+                $res = mysqli_query($conn, $sql2);
 
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="./images/menu-burger.jpg" alt="burger" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Nice Burger</h4>
-                    <p class="food-price">$2.3</p>
-                    <p class="food-detail">
-                        Made with Italian Sauce, Chicken, and organice vegetables.
-                    </p>
-                    <br>
-                    <a href="order.html" class="btn btn-primary">Order Now</a>
-                </div>
-            </div>
+                // count the number of rows
+                $count = mysqli_num_rows($res);
 
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="./images/menu-pizza.jpg" alt="pizza" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Food Title</h4>
-                    <p class="food-price">$2.3</p>
-                    <p class="food-detail">
-                        Made with Italian Sauce, Chicken, and organice vegetables.
-                    </p>
-                    <br>
-                    <a href="order.html" class="btn btn-primary">Order Now</a>
-                </div>
-            </div>
+                if($count > 0){
+                    while($row = mysqli_fetch_assoc($res)){
+                        $id = $row['id'];
+                        $title = $row['title'];
+                        $description = $row['description'];
+                        $image_name = $row['image_name'];
+                        $price = $row['price'];
 
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="./images/menu-pizza.jpg" alt="pizza" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Food Title</h4>
-                    <p class="food-price">$2.3</p>
-                    <p class="food-detail">
-                        Made with Italian Sauce, Chicken, and organice vegetables.
-                    </p>
-                    <br>
-                    <a href="order.html" class="btn btn-primary">Order Now</a>
-                </div>
-            </div>
+                        ?>
+                        
+                        <div class="food-menu-box">
+                            <div class="food-menu-img">
+                                <img src="<?php echo SITEURL.'images/food/'.$image_name;?>" alt="<?php echo $title;?>" class="img-responsive img-curve">
+                            </div>
+                            <div class="food-menu-desc">
+                                <h4><?php echo $title;?></h4>
+                                <p class="food-price">$<?php echo $price;?></p>
+                                <p class="food-detail">
+                                <?php echo $description;?>
+                                </p>
+                                <br>
+                                <a href="order.php" class="btn btn-primary">Order Now</a>
+                            </div>
+                        </div>
 
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="./images/menu-momo.jpg" alt="momo" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Chiken Steam momo</h4>
-                    <p class="food-price">$2.3</p>
-                    <p class="food-detail">
-                        Made with Italian Sauce, Chicken, and organice vegetables.
-                    </p>
-                    <br>
-                    <a href="order.html" class="btn btn-primary">Order Now</a>
-                </div>
-            </div>
+                        <?php
+
+                    }
+                }
+
+
+            ?>
+            
             <div class="clearfix"></div>
         </div>
         <p class="text-center">

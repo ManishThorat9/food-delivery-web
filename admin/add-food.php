@@ -59,13 +59,9 @@
                                         $id = $row['id'];
                                         $title = $row['title'];
 
-                                        ?>
-
-                                            <option value="<?php echo $id; ?>">
+                                        ?><option value="<?php echo $id; ?>">
                                                 <?php echo $title; ?>
-                                            </option> 
-
-                                        <?php
+                                            </option><?php
 
                                     }
                                 }

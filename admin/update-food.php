@@ -114,11 +114,7 @@
                                         $category_id = 
                                         $category_title = $row['title'];
 
-                                        ?>
-
-                                            <option <?php if($current_category == $category_id){echo "selected";}?> value="<?php $category_id;?>"><?php echo $category_title;?></option>
-                                        
-                                        <?php
+                                        ?><option <?php if($current_category == $category_id){echo "selected";}?> value="<?php $category_id;?>"><?php echo $category_title;?></option><?php
 
                                     }
                                 }
@@ -161,7 +157,7 @@
             // check submit btn is cliked or not
             if(isset($_POST['submit']))
             {
-                //echo "Button Clicked";
+                
 
                 //1. Get all the details from the form
                 $title = $_POST['title'];
@@ -223,7 +219,7 @@
                             if($remove==false)
                             {
                                 //failed to remove current image
-                                $_SESSION['remove-failed'] = "<div class='error'>Faile to remove current image.</div>";
+                                $_SESSION['remove-failed'] = "<div class='error'>Failed to remove current image.</div>";
                                 //redirect to manage food
                                 header('location:'.SITEURL.'admin/manage-food.php');
                                 //stop the process
@@ -263,12 +259,14 @@
                 {
                     //Query Exectued and Food Updated
                     $_SESSION['update'] = "<div class='success'>Food Updated Successfully.</div>";
-                    header('location:'.SITEURL.'admin/manage-food.php');
+                    echo "Button Clicked";
+                    header('location:'.SITEURL."admin/manage-food.php");
                 }
                 else
                 {
                     //Failed to Update Food
                     $_SESSION['update'] = "<div class='error'>Failed to Update Food.</div>";
+                    
                     header('location:'.SITEURL.'admin/manage-food.php');
                 }
 
