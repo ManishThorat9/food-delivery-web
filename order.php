@@ -1,5 +1,40 @@
 <?php include("partials-front/menu.php");?>
 
+    <?php 
+    
+        // check food id is set or not
+        if(isset($_GET['food_id'])){
+            // get the food id and details of selected food
+            $food_id = $_GET['food_id'];
+
+            // sql query to get data
+            $sql = "SELECT * FROM tbl_food WHERE id=$food_id";
+
+            // execute sql query
+            $res = mysqli_query($conn, $sql);
+
+            $count = mysqli_num_rows($res);
+
+            // check data is available or not
+            if($count == 1){
+                $row = mysqli_fetch_assoc($res);
+                
+                $food_title = $row['title'];
+                $description = $row['description'];
+                $price = $row['price'];
+                $image_name = $row['image_name'];
+            }
+            else{
+                header('location:'.SITEURL);
+            }
+
+
+        }
+        else{
+            header("location:".SITEURL);
+        }
+
+    ?>
 
     <!-- food search Section Starts Here -->
     <section class="food-search">
@@ -10,12 +45,23 @@
                     <legend>Selected Food</legend>
 
                     <div class="food-menu-img">
-                        <img src="./images/menu-pizza.jpg" alt="Pizza" class="img-responsive img-curve">
+
+                        <?php
+
+                            if($image_name != ""){
+                                ?><img src="<?php echo SITEURL.'images/food/'.$image_name;?>" alt="<?php echo $food_title;?>" class="img-responsive img-curve"><?php
+                            }
+                            else{
+                                echo "<div class='error'>Image not available</div>";
+                            }
+
+                        ?>
+
                     </div>
 
                     <div class="food-menu-desc">
-                        <h3>Food Title</h3>
-                        <p class="food-price">$2.3</p>
+                        <h3><?php echo $food_title;?></h3>
+                        <p class="food-price">$<?php echo $price;?></p>
 
                         <div class="order-label">Quantity</div>
                         <input type="number" name="qty" class="input-responsive" 
@@ -45,5 +91,11 @@
         </div>
     </section>
     <!-- food search  Section Ends Here -->
+
+    <?php
+        if(isset($_POST['submit'])){
+            header('location:'.SITEURL);
+        }
+    ?>
 
 <?php include("partials-front/footer.php");?>
