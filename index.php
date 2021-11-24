@@ -4,7 +4,7 @@
     <!-- food search Section Starts Here -->
     <section class="food-search text-center">
         <div class="container">
-            <form action="food-search.html" method="post">
+            <form action="<?php echo SITEURL;?>food-search.php" method="post">
                 <input type="search" name="search" placeholder="Search for Food.." required>
                 <input type="submit" value="Search" class="btn btn-primary">
             </form>
@@ -39,7 +39,7 @@
                         ?>
                         
                         
-                            <a href="category-foods.html">
+                            <a href="<?php echo SITEURL;?>category-foods.php?category_id=<?php echo $id;?>">
                                 <div class="box-3 float-container">
                                     <img src="<?php echo SITEURL.'images/category/'.$image_name;?>" alt="<?php echo $title;?>" class="img-responsive img-curve">
                                     <h3 class="float-text text-white"><?php echo $title;?></h3>

@@ -111,10 +111,10 @@
                                 if($count > 0){
                                     while($row = mysqli_fetch_assoc($res)){
                                         // get the details for category
-                                        $category_id = 
+                                        $category_id = $row['id'];
                                         $category_title = $row['title'];
 
-                                        ?><option <?php if($current_category == $category_id){echo "selected";}?> value="<?php $category_id;?>"><?php echo $category_title;?></option><?php
+                                        ?><option <?php if($current_category == $category_id){echo "selected";}?> value="<?php echo $category_id;?>"><?php echo $category_title;?></option><?php
 
                                     }
                                 }
@@ -259,7 +259,7 @@
                 {
                     //Query Exectued and Food Updated
                     $_SESSION['update'] = "<div class='success'>Food Updated Successfully.</div>";
-                    echo "Button Clicked";
+                    // echo "Button Clicked";
                     header('location:'.SITEURL."admin/manage-food.php");
                 }
                 else
