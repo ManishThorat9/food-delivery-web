@@ -7,6 +7,8 @@
             <?php 
                 // get the search keyword
                 $search = $_POST['search'];
+                // prevents sql injection
+                // $search = mysqli_real_escape_string($conn, $_POST['search']);
             ?>
             <h2>Foods on Your Search <a style="text-transform: capitalize;" href="#" class="text-white">"<?php echo $search;?>"</a></h2>
         </div>
@@ -50,7 +52,9 @@
             <?php 
 
                 // get the search keyword
-                $search = $_POST['search'];
+                // $search = $_POST['search'];
+                // prevents sql injection
+                $search = mysqli_real_escape_string($conn, $_POST['search']);
                 
                 // sql query to get data which match with keyword
                 $sql = "SELECT * FROM tbl_food WHERE title LIKE '%$search%' OR description LIKE '%$search%'";
@@ -81,7 +85,7 @@
                                     <?php echo $description;?>
                                     </p>
                                     <br>
-                                    <a href="order.html" class="btn btn-primary">Order Now</a>
+                                    <a href="<?php echo SITEURL; ?>order.html?food_id=<?php echo $id;?>" class="btn btn-primary">Order Now</a>
                                 </div>
                             </div><?php
 

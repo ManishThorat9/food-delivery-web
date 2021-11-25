@@ -30,7 +30,7 @@
     <!-- food search  Section Ends Here -->
 
     <!-- categories  Section starts Here -->
-    <section class="categories">
+    <!-- <section class="categories">
         <div class="container">
             <h2 class="text-center">Explore Foods</h2>
             <a href="#">
@@ -55,7 +55,7 @@
             </a>
             <div class="clearfix"></div>
         </div>
-    </section>
+    </section> -->
     <!-- categories  Section Ends Here -->
 
     <!-- food menu  Section Starts Here -->

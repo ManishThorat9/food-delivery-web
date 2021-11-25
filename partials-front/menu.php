@@ -9,7 +9,7 @@
     <title>Restaurant Website</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body oncontextmenu="return false;">
     <!-- Navbar Section Starts Here -->
     <section class="navbar">
         <div class="container">

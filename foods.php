@@ -4,7 +4,7 @@
     <!-- food search Section Starts Here -->
     <section class="food-search text-center">
         <div class="container">
-            <form action="food-search.html" method="post">
+            <form action="<?php echo SITEURL;?>food-search.php" method="post">
                 <input type="search" name="search" placeholder="Search for Food.." required>
                 <input type="submit" value="Search" class="btn btn-primary">
             </form>
@@ -83,9 +83,6 @@
             
             <div class="clearfix"></div>
         </div>
-        <p class="text-center">
-            <a href="#">See All Foods</a>
-        </p>
     </section>
     <!-- food menu  Section Ends Here -->
     

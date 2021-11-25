@@ -12,6 +12,15 @@
     </section>
     <!-- food search  Section Ends Here -->
 
+    <?php 
+
+        if(isset($_SESSION['order'])){
+            echo $_SESSION['order'];
+            unset($_SESSION['order']);
+        }
+
+    ?>
+
     <!-- categories  Section starts Here -->
     <section class="categories">
         <div class="container">
@@ -129,7 +138,7 @@
             <div class="clearfix"></div>
         </div>
         <p class="text-center">
-            <a href="#">See All Foods</a>
+            <a href="<?php echo SITEURL;?>foods.php">See All Foods</a>
         </p>
     </section>
     <!-- food menu  Section Ends Here -->
