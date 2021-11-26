@@ -28,7 +28,6 @@
                 header('location:'.SITEURL);
             }
 
-
         }
         else{
             header("location:".SITEURL);
@@ -40,7 +39,7 @@
     <section class="food-search">
         <div class="container">
             <h2 class="text-center text-white">Fill this form to confirm your order.</h2>
-            <form action="" class="order" method="POST">
+            <form action="<?php echo SITEURL."payment_reciept.php"?>" class="order" method="POST">
                 <fieldset>
                     <legend>Selected Food</legend>
 
@@ -61,7 +60,10 @@
 
                     <div class="food-menu-desc">
                         <h3><?php echo $food_title;?></h3>
+                        <input type="text" hidden name="title" value="<?php echo $food_title;?>">
+
                         <p class="food-price">$<?php echo $price;?></p>
+                        <input type="text" name="price" value="<?php echo $price;?>" hidden>
 
                         <div class="order-label">Quantity</div>
                         <input type="number" name="qty" class="input-responsive" 
@@ -92,50 +94,5 @@
     </section>
     <!-- food search  Section Ends Here -->
 
-    <?php
-        if(isset($_POST['submit'])){
-            // get the details
-            $food = $food_title;
-            $qty = $_POST['qty'];
-
-            $total = $price * $qty;
-
-            $order_date = date("Y-m-d h:i:s a"); // order date
-
-            $status = "Ordered";  // ordered , on delivery, delivered, canceled
-
-            $customer_name = $_POST['full-name'];
-            $customer_contact = $_POST['contact'];
-            $customer_email = $_POST['email'];
-            $customer_address = $_POST['address'];
-
-            // save the order in database
-            // create sql to save the data
-            $sql2 = "INSERT INTO tbl_order SET
-                food='$food',
-                price='$price',
-                qty ='$qty',
-                total='$total',
-                order_date='$order_date',
-                status='$status',
-                customer_name='$customer_name',
-                customer_contact='$customer_contact',
-                customer_email='$customer_email',
-                customer_address='$customer_address'";
-
-            // execute the query
-            $res2 = mysqli_query($conn, $sql2);
-
-            // check whether query executed succesfully or not
-            if($res2==true){
-                $_SESSION['order'] = "<div class='success'>Food Order Succesfully</div><br>";
-                header("location:".SITEURL."payment_reciept.php");
-            }
-            else{
-                $_SESSION['order'] = "<div class='error'>Failed to Order</div><br>";
-                header("location:".SITEURL);
-            }
-        }
-    ?>
 
 <?php include("partials-front/footer.php");?>
