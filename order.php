@@ -61,6 +61,9 @@
                     <div class="food-menu-desc">
                         <h3><?php echo $food_title;?></h3>
                         <input type="text" hidden name="title" value="<?php echo $food_title;?>">
+                        <input type="text" hidden name="id" value="<?php echo $food_id;?>">
+                        <input type="text" hidden name="description" value="<?php echo $description;?>">
+                        <input type="text" hidden name="image_name" value="<?php echo $image_name;?>">
 
                         <p class="food-price">$<?php echo $price;?></p>
                         <input type="text" name="price" value="<?php echo $price;?>" hidden>
