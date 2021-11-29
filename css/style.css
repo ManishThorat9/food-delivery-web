@@ -169,6 +169,35 @@ fieldset{
     margin-left: 8%;
 }
 
+.order-search{
+    background-image: linear-gradient(rgba(0,0,0, 0.7), rgba(0,0,0, 0.7)) , url(../images/bg.jpg);
+}
+
+.order-details{
+    padding: 1%;
+    /* border: 1px solid black; */
+    width: 100%;
+}
+
+.tax-delivery{
+    padding: 5px 0;
+    font-weight: bold;
+    margin-bottom: .5%;
+}
+
+.payment-mode, .option, .total{
+    font-weight: 600;
+}
+
+.total{
+    margin: 1.5% 0;
+}
+
+.confirm-btn{
+    width: 100%;
+    margin-top: 1%;
+}
+
 .food-price{
     font-size: 1.2rem;
     margin: 2% 0;
@@ -190,8 +219,35 @@ fieldset{
 
 /* for order section */
 .order{
-    width: 50%;
+    /* width: 50%; */
+    width: 100%;
     margin: 0 auto;
+
+}
+.box{
+    padding: 4%;
+    /* border: 2px solid black; */
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(2px);;
+    border-radius: 10px;
+    width: 40%;
+    display: inline-block;
+    height:450px;
+}
+.left{float: right; height:550px; padding: 3%;}
+.right{float: left;margin-top: 50px;}
+.order-food-img{
+    float: none;
+    width: 100%;
+    height: 50%;
+    margin-bottom: 5%;
+}
+.order-image{
+    /* width: fit-content;  */
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 15px;
 }
 .input-responsive{
     width: 96%;
