@@ -1,7 +1,6 @@
 <?php include("partials-front/menu.php");?>
 
     <?php 
-    
         // check food id is set or not
         if(isset($_GET['food_id'])){
             // get the food id and details of selected food
@@ -27,18 +26,16 @@
             else{
                 header('location:'.SITEURL);
             }
-
         }
         else{
             header("location:".SITEURL);
-        }
-
-    ?>
-
+        }?>
+    
     <!-- food search Section Starts Here -->
     <section class="food-search order-search">
         <div class="container">
             <h2 class="text-center text-white">Fill this form to confirm your order.</h2>
+            
             <form action="" class="order" method="POST">
                 <div class="box left">
                     <!-- <legend>Selected Food</legend> -->
@@ -63,7 +60,7 @@
                         <input type="text" hidden name="image_name" value="<?php echo $image_name;?>">
 
                         <p class="food-price">Price : ₹<?php echo $price;?></p>
-                        <input type="text" name="price" value=<?php echo '$price;'?> hidden>
+                        <input type="text" name="price" value=<?php echo $price;?> hidden>
 
                         <div class="order-label">Quantity</div>
                         <div class="order-details">
@@ -85,12 +82,12 @@
                             <p class="total">Total : ₹<span id="txt-total">0</span></p>
 
                             <div class="text-right">
-                                <input type="submit" name="submit" value="Confirm Order" class="confirm-btn btn btn-primary">
+                                <input type="submit" name="submit" value="Confirm Order" id="rzp-button1" class="confirm-btn btn btn-primary">
                             </div>
                         </div>
                         
                     </div>
-                </div>
+                </div> -->
 
                 <div class="box right">
                     <!-- <legend>Delivary Details</legend> -->
@@ -113,6 +110,9 @@
     </section>
     <!-- food search  Section Ends Here -->
 
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
     <script>
         
         // get total id element
@@ -121,43 +121,47 @@
         var tax = Number(document.querySelector('#txt-tax').innerText);
         var deliver = Number(document.querySelector('#txt-deliver').innerText);
         var price = <?php echo $price;?>;
-
+        
         total.innerText = (Number(qty.value) * price) + tax + deliver;
 
         // adding on input event on qty fieald
         qty.addEventListener('input', changeTotal, true);
-
+        var cal;
+        
         function changeTotal(){
-            var cal;
-            var qty_val = qty.value; 
+            var qty_val = Number(qty.value); 
             if(qty_val > 0){
                 cal = (qty_val * price) + tax + deliver;
             }
             else{
                 cal = price + tax + deliver;
             }
-
+            
             total.innerText = cal;
-
+            
         }
-
+        
     </script>
 
-<?php 
 
+    <?php 
         // check submit btn is clicked or not 
         if(isset($_POST['submit'])){
-
-            // get value of payment mode
-            $payment_mode = $_POST['payment'];
-            $id = $_POST['id'];
-
+            
             // 
-            $food = $_POST['title'];
             $food_id = $_POST['id'];
+            $food = $_POST['title'];
             $food_price = $_POST['price'];
             $qty = $_POST['qty'];
-            // $qty = ($food_id * $qty) + 15 + 10;
+            $total = ($food_price * $qty) + 10 + 15;   // 10 for deliver and 15 for tax
+            $payment_mode = $_POST['payment'];
+            $order_date = date("Y-m-d h:i:s a"); // order date
+            $status = "Ordered";  // ordered , on delivery, delivered, canceled
+            // getting customer details
+            $customer_name = $_POST['full-name'];
+            $customer_contact = $_POST['contact'];
+            $customer_email = $_POST['email'];
+            $customer_address = $_POST['address'];
             
 
             // check payment mode is cod or online
@@ -165,28 +169,58 @@
                 // insert data and goto print reciept page;
 
                 // query to insert data;
-                $sql = "INSERT INTO tbl_order SET 
+                $sql2 = "INSERT INTO tbl_order SET 
                     food='$food',
-                    price='$price',
+                    price='$food_price',
                     qty='$qty',
                     total='$total',
                     pay_mode='$payment_mode',
+                    order_date='$order_date', 
                     status='$status',
-                    order_date='$date', 
                     customer_name='$customer_name',
                     customer_contact='$customer_contact',
                     customer_email='$customer_email',
-                    customer_address='$customer_address',
+                    customer_address='$customer_address'
                     ";
 
-                
-                
-                echo "<script>location.href = '".SITEURL."payment_reciept.php'</script>";
+                // execute query
+                $res2 = mysqli_query($conn, $sql2);
 
-                header('location:'.SITEURL.'payment_reciept.php?id='.$id);
+                if($res2 == true){
+                    echo "<script>location.href = '".SITEURL."payment_reciept.php?id=$food_id'</script>";
+                    // header('location:'.SITEURL.'payment_reciept.php?id='.$food_id);
+                }
+                else{
+                    echo "<script>location.href = '".SITEURL."order.php?food_id=$food_id'</script>";
+                }
             }
             else{
-                header('location:'.SITEURL.'order.php');
+                
+                // online payment gateway code here
+                $total = $total * 100;
+                echo '
+                <script>
+                    var options = { 
+                        "key": "rzp_test_iwQImoVfBMGY7L", // Enter the Key ID generated from the Dashboard    
+                        "amount": '.$total.', // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise    
+                        "currency": "INR",
+                        "name": "Wow Food",
+                        "description": "Test Transaction",
+                        "image": "https://wilcity.com/wp-content/uploads/2018/12/sample-logo-design-png-3.png",
+                        //    "order_id": "order_Ef80WJDPBmAeNt", //Pass the `id` obtained in the previous step    
+                        //    "account_id": "acc_Ef7ArAsdU5t0XL",
+                        "handler": function (response){
+                                    //    alert(response.razorpay_payment_id);        
+                                    //    alert(response.razorpay_order_id);        
+                                    //    alert(response.razorpay_signature);    
+                                    // console.log(response);
+                                    location.href = "'.SITEURL.'order.php?food_id='.$food_id.'";
+                            }
+                    };
+                
+                    var rzp1 = new Razorpay(options);
+                    document.getElementById("rzp-button1").onclick = function(e){rzp1.open();e.preventDefault();}
+                </script>';
             }
         }
 

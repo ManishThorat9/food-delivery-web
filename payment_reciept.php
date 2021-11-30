@@ -22,25 +22,50 @@
     <?php
 
         // check if data is passed or not
-        if(isset($_POST['submit'])){
-            // get data 
-            $food_id = $_POST['id'];
-            $food_title = $_POST['title'];
-            $image_name = $_POST['image_name'];
-            $food_description = $_POST['description'];
-            $food_price = $_POST['price'];
-            $qty = $_POST['qty'];
-            $total_amt = $food_price * $qty;
+        if(isset($_GET['id'])){
+            $food_id = $_GET['id'];
 
-            // customer info
-            $customer_name = $_POST['full-name'];
-            $customer_contact = $_POST['contact'];
-            $customer_email = $_POST['email'];
-            $customer_address = $_POST['address'];
+            // sql query to get last inserted row in table
+            $sql = "SELECT * FROM tbl_order WHERE id=(SELECT MAX(id) AS id FROM tbl_order)";
+            $res = mysqli_query($conn, $sql);
 
-            $tax = 15;
-            $delivery_chrg = 10;
-            $final_amt = $tax + $delivery_chrg + $total_amt;
+            $sql2 = "SELECT * FROM tbl_food WHERE id=$food_id";
+            $res2 = mysqli_query($conn, $sql2);
+
+            $count = mysqli_num_rows($res);
+            $count2 = mysqli_num_rows($res2);
+
+            if($count == 1 && $count== 1){
+                // data avaiable 
+                $row = mysqli_fetch_assoc($res);
+                $row2 = mysqli_fetch_assoc($res2);
+
+                
+                $image_name = $row2['image_name'];
+                $food_description = $row2['description'];
+                $food_price = $row2['price'];
+
+                $food_title = $row['food'];
+                $order_id = $row['id'];
+                $qty = $row['qty'];
+                $final_amt = $row['total'];
+                $pay_mode = $row['pay_mode'];
+                $order_date = $row['order_date'];
+                // // customer info
+                $customer_name = $row['customer_name'];
+                $customer_contact = $row['customer_contact'];
+                $customer_email = $row['customer_email'];
+                $customer_address = $row['customer_address'];
+
+                $tax = 15;
+                $delivery_chrg = 10;
+                $total_amt = (int)$qty * (int)$food_price;
+
+            }
+            else{
+                // no data send to order page
+                // header('')
+            }
         }
         else{
             header("location:".SITEURL);
@@ -49,8 +74,8 @@
     ?>
 
     <div id='receipt' class="my-5 page "  size="A4">
-        <div class="p-5">
-            <section class="top-content bb d-flex justify-content-between">
+        <div class="pt-5 pb-5 pl-4 pr-4">
+            <section class="top-content bb d-flex justify-content-between pr-2">
                 <div class="logo">
                     <img src="./images/logo.png" alt="" class="img-fluid">
                 </div>
@@ -59,7 +84,7 @@
                         <p>Invoice</p>
                     </div>
                     <div class="position-relative">
-                        <p>Invoice No. <span>XXXX</span></p>
+                        <p>Invoice No. <span><?php echo $order_id;?></span></p>
                     </div>
                 </div>
             </section>
@@ -82,11 +107,11 @@
                     </div>
                     <div class="row extra-info pt-3">
                         <div class="col-7">
-                            <p>Payment Method: <span>bKash</span></p>
-                            <p>Order Number: <span><?php echo "Order Id"?></span></p>
+                            <p>Payment Method: <span><?php $pay_mode;?></span></p>
+                            <p>Order Number: <span><?php echo $order_id;?></span></p>
                         </div>
                         <div class="col-5">
-                            <p>Deliver Date: <span><?php echo date('y-m-d');?></span></p>
+                            <p>Deliver Date: <span><?php echo $order_date;?></span></p>
                         </div>
                     </div>
                 </div>
@@ -214,33 +239,7 @@
 
 </body></html>
 
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<button id="rzp-button1">Pay</button>
-<script>
-var options = { 
-       "key": "rzp_test_iwQImoVfBMGY7L", // Enter the Key ID generated from the Dashboard    
-       "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise    
-       "currency": "INR",
-       "name": "Wow Food",
-       "description": "Test Transaction",
-       "image": "https://wilcity.com/wp-content/uploads/2018/12/sample-logo-design-png-3.png",
-    //    "order_id": "order_Ef80WJDPBmAeNt", //Pass the `id` obtained in the previous step    
-    //    "account_id": "acc_Ef7ArAsdU5t0XL",
-       "handler": function (response){
-                //    alert(response.razorpay_payment_id);        
-                //    alert(response.razorpay_order_id);        
-                //    alert(response.razorpay_signature);    
-                console.log(response);
-        }
-};
 
-var rzp1 = new Razorpay(options);
-
-document.getElementById('rzp-button1').onclick = function(e){
-    rzp1.open();
-    e.preventDefault();
-}
-</script>
 
 <script>
 
@@ -271,17 +270,17 @@ document.getElementById('rzp-button1').onclick = function(e){
         //     $customer_address = $_POST['address'];
         //     // save the order in database
         //     // create sql to save the data
-        //     $sql2 = "INSERT INTO tbl_order SET
-        //         food='$food',
-        //         price='$price',
-        //         qty ='$qty',
-        //         total='$total',
-        //         order_date='$order_date',
-        //         status='$status',
-        //         customer_name='$customer_name',
-        //         customer_contact='$customer_contact',
-        //         customer_email='$customer_email',
-        //         customer_address='$customer_address'";
+            // $sql2 = "INSERT INTO tbl_order SET
+            //     food='$food',
+            //     price='$price',
+            //     qty ='$qty',
+            //     total='$total',
+            //     order_date='$order_date',
+            //     status='$status',
+            //     customer_name='$customer_name',
+            //     customer_contact='$customer_contact',
+            //     customer_email='$customer_email',
+            //     customer_address='$customer_address'";
 
         //     // execute the query
         //     $res2 = mysqli_query($conn, $sql2);
