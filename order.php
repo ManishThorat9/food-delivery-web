@@ -71,7 +71,7 @@
 
                             <span class="payment-mode">Payment Method : </span>
 
-                            <select name="payment" class="option">
+                            <select name="payment" id="pay_mode" class="option">
                                 <option value="cod">COD</option>
                                 <option value="online">Online Payment</option>
                             </select>
@@ -87,7 +87,7 @@
                         </div>
                         
                     </div>
-                </div> -->
+                </div>
 
                 <div class="box right">
                     <!-- <legend>Delivary Details</legend> -->
@@ -122,6 +122,7 @@
         var deliver = Number(document.querySelector('#txt-deliver').innerText);
         var price = <?php echo $price;?>;
         
+        
         total.innerText = (Number(qty.value) * price) + tax + deliver;
 
         // adding on input event on qty fieald
@@ -138,7 +139,6 @@
             }
             
             total.innerText = cal;
-            
         }
         
     </script>
@@ -163,10 +163,7 @@
             $customer_email = $_POST['email'];
             $customer_address = $_POST['address'];
             
-
-            // check payment mode is cod or online
-            if($payment_mode == "cod"){
-                // insert data and goto print reciept page;
+            // insert data and goto print reciept page;
 
                 // query to insert data;
                 $sql2 = "INSERT INTO tbl_order SET 
@@ -186,41 +183,23 @@
                 // execute query
                 $res2 = mysqli_query($conn, $sql2);
 
-                if($res2 == true){
-                    echo "<script>location.href = '".SITEURL."payment_reciept.php?id=$food_id'</script>";
-                    // header('location:'.SITEURL.'payment_reciept.php?id='.$food_id);
-                }
-                else{
+                if($res2 == false){
                     echo "<script>location.href = '".SITEURL."order.php?food_id=$food_id'</script>";
+                    die();
                 }
+
+            // check payment mode is cod or online
+            if($payment_mode == "cod"){
+
+                echo "<script>location.href = '".SITEURL."payment_reciept.php?id=$food_id'</script>";
+
             }
             else{
                 
                 // online payment gateway code here
-                $total = $total * 100;
-                echo '
-                <script>
-                    var options = { 
-                        "key": "rzp_test_iwQImoVfBMGY7L", // Enter the Key ID generated from the Dashboard    
-                        "amount": '.$total.', // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise    
-                        "currency": "INR",
-                        "name": "Wow Food",
-                        "description": "Test Transaction",
-                        "image": "https://wilcity.com/wp-content/uploads/2018/12/sample-logo-design-png-3.png",
-                        //    "order_id": "order_Ef80WJDPBmAeNt", //Pass the `id` obtained in the previous step    
-                        //    "account_id": "acc_Ef7ArAsdU5t0XL",
-                        "handler": function (response){
-                                    //    alert(response.razorpay_payment_id);        
-                                    //    alert(response.razorpay_order_id);        
-                                    //    alert(response.razorpay_signature);    
-                                    // console.log(response);
-                                    location.href = "'.SITEURL.'order.php?food_id='.$food_id.'";
-                            }
-                    };
+                // $total = $total * 100;
+                echo "<script>location.href = '".SITEURL."confirm.php?price=$total&id=$food_id'</script>";
                 
-                    var rzp1 = new Razorpay(options);
-                    document.getElementById("rzp-button1").onclick = function(e){rzp1.open();e.preventDefault();}
-                </script>';
             }
         }
 

@@ -35,7 +35,7 @@
             $count = mysqli_num_rows($res);
             $count2 = mysqli_num_rows($res2);
 
-            if($count == 1 && $count== 1){
+            if($count == 1 && $count2== 1){
                 // data avaiable 
                 $row = mysqli_fetch_assoc($res);
                 $row2 = mysqli_fetch_assoc($res2);
@@ -61,10 +61,23 @@
                 $delivery_chrg = 10;
                 $total_amt = (int)$qty * (int)$food_price;
 
+
+                // send email in php
+                $owner_mail = "aaryan28102002@gmail.com";
+                $to = ''.$customer_email.','.$owner_mail;
+                $subject = "Food Order";
+                $message = "Order Food : ".$food_title."\n Qty : ".$qty."\n Price : ".$food_price."\n Total Amt : ".$final_amt."\n Payment Mode : ".$pay_mode."";
+                $from = "nipaneeducation@gmail.com";
+                $headers = "From : $from";
+
+                mail($to, $subject, $message, $headers);
+
+                // echo "Mail Sent";
+
             }
             else{
                 // no data send to order page
-                // header('')
+                header('location:'.SITEURL);
             }
         }
         else{
@@ -107,7 +120,7 @@
                     </div>
                     <div class="row extra-info pt-3">
                         <div class="col-7">
-                            <p>Payment Method: <span><?php $pay_mode;?></span></p>
+                            <p>Payment Method: <span><?php echo $pay_mode;?></span></p>
                             <p>Order Number: <span><?php echo $order_id;?></span></p>
                         </div>
                         <div class="col-5">
