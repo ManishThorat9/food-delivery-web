@@ -23,7 +23,8 @@
             if($remove == false){
 
                 $_SESSION['delete'] = "<div class='error'>Failed to remove image</div><br>";
-                header("location:".SITEURL."admin/manage-food.php");
+                // header("location:".SITEURL."admin/manage-food.php");
+                echo "<script>location.href = '".SITEURL."admin/manage-food.php' </script>";
 
                 // end prosess
                 die();
@@ -39,18 +40,21 @@
         // check if query executed or not
         if($res == true){
             $_SESSION['delete'] = "<div class='success'>Food Deleted Successfully</div><br>";
-            header("location:".SITEURL."admin/manage-food.php");
+            // header("location:".SITEURL."admin/manage-food.php");
+            echo "<script>location.href = '".SITEURL."admin/manage-food.php' </script>";
         }
         else{
             $_SESSION['delete'] = "<div class='error'>Failed to Delete Food</div><br>";
-            header("location:".SITEURL."admin/manage-food.php");
+            // header("location:".SITEURL."admin/manage-food.php");
+            echo "<script>location.href = '".SITEURL."admin/manage-food.php' </script>";
         }
 
     }
     else{
         // redirect to manage food page
         $_SESSION['delete'] = "<div class='error'>Unauthorized access</div>";
-        header("location:".SITEURL."admin/manage-food.php");
+        // header("location:".SITEURL."admin/manage-food.php");
+        echo "<script>location.href = '".SITEURL."admin/manage-food.php' </script>";
     }
 
 ?>

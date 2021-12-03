@@ -63,10 +63,10 @@
 
 
                 // send email in php
-                $owner_mail = "aaryan28102002@gmail.com";
+                $owner_mail = "aaryan28102002@gmail.com, tjaiswal889@gmail.com";
                 $to = ''.$customer_email.','.$owner_mail;
                 $subject = "Food Order";
-                $message = "Order Food : ".$food_title."\n Qty : ".$qty."\n Price : ".$food_price."\n Total Amt : ".$final_amt."\n Payment Mode : ".$pay_mode."";
+                $message = "Name : ".$customer_name."\nPhone No : ".$customer_contact."\nOrder Food : ".$food_title."\nQty : ".$qty."\nPrice : ".$food_price."\nTotal Amt : ".$final_amt."(Including Tax)\nPayment Mode : ".$pay_mode."";
                 $from = "nipaneeducation@gmail.com";
                 $headers = "From : $from";
 
@@ -77,11 +77,13 @@
             }
             else{
                 // no data send to order page
-                header('location:'.SITEURL);
+                // header('location:'.SITEURL);
+                echo "<script>location.href = '".SITEURL."' </script>";
             }
         }
         else{
-            header("location:".SITEURL);
+            // header("location:".SITEURL);
+            echo "<script>location.href = '".SITEURL."' </script>";
         }
 
     ?>

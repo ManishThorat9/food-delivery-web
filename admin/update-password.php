@@ -99,7 +99,8 @@
                                 //REdirect to Manage Admin Page with Success Message
                                 $_SESSION['change-pwd'] = "<div class='success'>Password Changed Successfully. </div>";
                                 //Redirect the User
-                                header('location:'.SITEURL.'admin/manage-admin.php');
+                                // header('location:'.SITEURL.'admin/manage-admin.php');
+                                echo "<script>location.href = '".SITEURL."admin/manage-admin.php' </script>";
                             }
                             else
                             {
@@ -107,7 +108,8 @@
                                 //REdirect to Manage Admin Page with Error Message
                                 $_SESSION['change-pwd'] = "<div class='error'>Failed to Change Password. </div>";
                                 //Redirect the User
-                                header('location:'.SITEURL.'admin/manage-admin.php');
+                                // header('location:'.SITEURL.'admin/manage-admin.php');
+                                echo "<script>location.href = '".SITEURL."admin/manage-admin.php' </script>";
                             }
                         }
                         else
@@ -115,7 +117,8 @@
                             //REdirect to Manage Admin Page with Error Message
                             $_SESSION['pwd-not-match'] = "<div class='error'>Password Did not Patch. </div>";
                             //Redirect the User
-                            header('location:'.SITEURL.'admin/manage-admin.php');
+                            // header('location:'.SITEURL.'admin/manage-admin.php');
+                            echo "<script>location.href = '".SITEURL."admin/manage-admin.php' </script>";
 
                         }
                     }
@@ -124,7 +127,8 @@
                         //User Does not Exist Set Message and REdirect
                         $_SESSION['user-not-found'] = "<div class='error'>User Not Found. </div>";
                         //Redirect the User
-                        header('location:'.SITEURL.'admin/manage-admin.php');
+                        // header('location:'.SITEURL.'admin/manage-admin.php');
+                        echo "<script>location.href = '".SITEURL."admin/manage-admin.php' </script>";
                     }
                 }
 

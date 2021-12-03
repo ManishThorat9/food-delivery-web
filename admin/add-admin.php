@@ -88,7 +88,8 @@
             //Create a Session Variable to Display Message
             $_SESSION['add'] = "<div class='success'>Admin Added Successfully.</div><br>";
             //Redirect Page to Manage Admin
-            header("location:".SITEURL.'admin/manage-admin.php');
+            // header("location:".SITEURL.'admin/manage-admin.php');
+            echo "<script>location.href = '".SITEURL."admin/manage-admin.php' </script>";
         }
         else
         {
@@ -97,7 +98,8 @@
             //Create a Session Variable to Display Message
             $_SESSION['add'] = "<div class='error'>Failed to Add Admin.</div><br>";
             //Redirect Page to Add Admin
-            header("location:".SITEURL.'admin/add-admin.php');
+            // header("location:".SITEURL.'admin/add-admin.php');
+            echo "<script>location.href = '".SITEURL."admin/add-admin.php' </script>";
         }
 
     }

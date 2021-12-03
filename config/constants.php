@@ -12,5 +12,4 @@
 
     $conn = new mysqli(LOCALHOST, USERNAME, PASSWORD) or die(mysqli_error($conn)); // database connection
     $db_select = mysqli_select_db($conn, DB_NAME) or die(mysqli_error($conn)); // Selecting database
-
 ?>

@@ -160,7 +160,8 @@
                             // redirect to add food page with error msg
 
                             $_SESSION['upload'] = "<div class='error'>Failed to upload image</div><br>";
-                            header("location:".SITEURL."admin/add-food.php");
+                            // header("location:".SITEURL."admin/add-food.php");
+                            echo "<script>location.href = '".SITEURL."admin/add-food.php' </script>";
 
                             // stop the process
                             die();
@@ -184,12 +185,14 @@
                 if($res == true){
                     // data inserted succesfully msg and redirect to manage food page
                     $_SESSION['add'] = "<div class='success'>Food Added Succesfully</div><br>";
-                    header("location:".SITEURL."admin/manage-food.php");
+                    // header("location:".SITEURL."admin/manage-food.php");
+                    echo "<script>location.href = '".SITEURL."admin/manage-food.php' </script>";
                 }
                 else{
                     // failed to insert data
                     $_SESSION['add'] = "<div class='error'>Failed to Add Food...</div><br>";
-                    header("location:".SITEURL."admin/manage-food.php");
+                    // header("location:".SITEURL."admin/manage-food.php");
+                    echo "<script>location.href = '".SITEURL."admin/manage-food.php' </script>";
                 }
 
                 

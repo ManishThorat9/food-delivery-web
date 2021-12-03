@@ -18,7 +18,8 @@
         // check if data available then continue
         if($count != 1){
             // redirect to manage-food page
-            header("location:".SITEURL."admin/manage-food.php");
+            // header("location:".SITEURL."admin/manage-food.php");
+            echo "<script>location.href = '".SITEURL."admin/manage-food.php' </script>";
         }
 
         $row2 = mysqli_fetch_assoc($res2);
@@ -32,7 +33,8 @@
 
     }
     else{
-        header("location:".SITEURL."admin/manage-food.php");
+        // header("location:".SITEURL."admin/manage-food.php");
+        echo "<script>location.href = '".SITEURL."admin/manage-food.php' </script>";
     }
 
 ?>
@@ -201,7 +203,8 @@
                             //FAiled to Upload
                             $_SESSION['upload'] = "<div class='error'>Failed to Upload new Image.</div>";
                             //REdirect to Manage Food 
-                            header('location:'.SITEURL.'admin/manage-food.php');
+                            // header('location:'.SITEURL.'admin/manage-food.php');
+                            echo "<script>location.href = '".SITEURL."admin/manage-food.php' </script>";
                             //Stop the Process
                             die();
                         }
@@ -221,7 +224,8 @@
                                 //failed to remove current image
                                 $_SESSION['remove-failed'] = "<div class='error'>Failed to remove current image.</div>";
                                 //redirect to manage food
-                                header('location:'.SITEURL.'admin/manage-food.php');
+                                // header('location:'.SITEURL.'admin/manage-food.php');
+                                echo "<script>location.href = '".SITEURL."admin/manage-food.php' </script>";
                                 //stop the process
                                 die();
                             }
@@ -260,14 +264,16 @@
                     //Query Exectued and Food Updated
                     $_SESSION['update'] = "<div class='success'>Food Updated Successfully.</div>";
                     // echo "Button Clicked";
-                    header('location:'.SITEURL."admin/manage-food.php");
+                    // header('location:'.SITEURL."admin/manage-food.php");
+                    echo "<script>location.href = '".SITEURL."admin/manage-food.php' </script>";
                 }
                 else
                 {
                     //Failed to Update Food
                     $_SESSION['update'] = "<div class='error'>Failed to Update Food.</div>";
                     
-                    header('location:'.SITEURL.'admin/manage-food.php');
+                    // header('location:'.SITEURL.'admin/manage-food.php');
+                    echo "<script>location.href = '".SITEURL."admin/manage-food.php' </script>";
                 }
 
                 

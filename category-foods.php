@@ -17,7 +17,8 @@
     }
     else{
         // redirect to home page
-        header('location:'.SITEURL);
+        // header('location:'.SITEURL);
+        echo "<script>location.href = '".SITEURL."' </script>";
     }
 ?>
 

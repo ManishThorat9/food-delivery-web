@@ -1,4 +1,3 @@
-
 <?php include('partials/menu.php'); ?>
 
         <!-- Main Content Section Starts -->

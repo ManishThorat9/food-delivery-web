@@ -135,14 +135,16 @@
             $_SESSION['user'] = $username; //TO check whether the user is logged in or not and logout will unset it
 
             //REdirect to HOme Page/Dashboard
-            header('location:'.SITEURL.'admin/');
+            // header('location:'.SITEURL.'admin/');
+            echo "<script>location.href = '".SITEURL."admin/' </script>";
         }
         else
         {
             //User not Available and Login FAil
             $_SESSION['login'] = "<div class='error text-center'>Username or Password did not match.</div><br>";
             //REdirect to HOme Page/Dashboard
-            header('location:'.SITEURL.'admin/login.php');
+            // header('location:'.SITEURL.'admin/login.php');
+            echo "<script>location.href = '".SITEURL."admin/login.php' </script>";
         }
 
 

@@ -24,11 +24,13 @@
                 $image_name = $row['image_name'];
             }
             else{
-                header('location:'.SITEURL);
+                // header('location:'.SITEURL);
+                echo "<script>location.href = '".SITEURL."' </script>";
             }
         }
         else{
-            header("location:".SITEURL);
+            //  ("location:".SITEURL);
+            echo "<script>location.href = '".SITEURL."' </script>";
         }?>
     
     <!-- food search Section Starts Here -->
@@ -155,7 +157,7 @@
             $qty = $_POST['qty'];
             $total = ($food_price * $qty) + 10 + 15;   // 10 for deliver and 15 for tax
             $payment_mode = $_POST['payment'];
-            $order_date = date("Y-m-d h:i:s a"); // order date
+            $order_date = date("d-m-y h:i:s"); // order date
             $status = "Ordered";  // ordered , on delivery, delivered, canceled
             // getting customer details
             $customer_name = $_POST['full-name'];

@@ -30,7 +30,8 @@
                     // create session msg to display error
                     $_SESSION['no-category-found'] = "<div class='error'>Category not found.</div>";
                     // redirect to manage category page
-                    header("location:".SITEURL."admin/manage-category.php");
+                    // header("location:".SITEURL."admin/manage-category.php");
+                    echo "<script>location.href = '".SITEURL."admin/manage-category.php' </script>";
                 }
 
                 
@@ -38,7 +39,8 @@
             }
             else{
                 // redirect to manage category page
-                header("location:".SITEURL."admin/manage-category.php");
+                // header("location:".SITEURL."admin/manage-category.php");
+                echo "<script>location.href = '".SITEURL."admin/manage-category.php' </script>";
             }
 
         ?>
@@ -106,7 +108,7 @@
                 // echo "Submited";
                 // get all the values from our form
                 $title = $_POST['title'];
-                $image = $_POST['image'];
+                // $image = $_POST['image'];
                 $featured = $_POST['featured'];
                 $active = $_POST['active'];
 
@@ -142,7 +144,8 @@
                             //SEt message
                             $_SESSION['upload'] = "<div class='error'>Failed to Upload Image. </div><br>";
                             //Redirect to Add CAtegory Page
-                            header('location:'.SITEURL.'admin/manage-category.php');
+                            // header('location:'.SITEURL.'admin/manage-category.php');
+                            echo "<script>location.href = '".SITEURL."admin/manage-category.php' </script>";
                             //STop the Process
                             die();
                         }
@@ -156,7 +159,8 @@
                             if($remove == false){
                                 $_SESSION['failed-remove'] = "<div class='error'>Failed to remove current image</div>";
                                 // redirect to manage category page
-                                header("location:".SITEURL."admin/manage-category.php");
+                                // header("location:".SITEURL."admin/manage-category.php");
+                                echo "<script>location.href = '".SITEURL."admin/manage-category.php' </script>";
     
                                 // end the proccess
                                 die();
@@ -182,11 +186,13 @@
                 // check query executed or not
                 if($res==true){
                     $_SESSION['update'] = "<div class='success'>Category Updated Successfully.</div>";
-                    header("location:".SITEURL."admin/manage-category.php");
+                    // header("location:".SITEURL."admin/manage-category.php");
+                    echo "<script>location.href = '".SITEURL."admin/manage-category.php' </script>";
                 }
                 else{
                     $_SESSION['update'] = "<div class='error'>Failed to Update category.</div>";
-                    header("location:".SITEURL."admin/manage-category.php");
+                    // header("location:".SITEURL."admin/manage-category.php");
+                    echo "<script>location.href = '".SITEURL."admin/manage-category.php' </script>";
                 }
 
             }

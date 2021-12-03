@@ -25,7 +25,8 @@
                 //Set the SEssion Message
                 $_SESSION['remove'] = "<div class='error'>Failed to Remove Category Image.</div><br>";
                 //REdirect to Manage Category page
-                header('location:'.SITEURL.'admin/manage-category.php');
+                // header('location:'.SITEURL.'admin/manage-category.php');
+                echo "<script>location.href = '".SITEURL."admin/manage-category.php' </script>";
                 //Stop the Process
                 die();
             }
@@ -44,14 +45,16 @@
             //SEt Success MEssage and REdirect
             $_SESSION['delete'] = "<div class='success'>Category Deleted Successfully.</div><br>";
             //Redirect to Manage Category
-            header('location:'.SITEURL.'admin/manage-category.php');
+            // header('location:'.SITEURL.'admin/manage-category.php');
+            echo "<script>location.href = '".SITEURL."admin/manage-category.php' </script>";
         }
         else
         {
             //SEt Fail MEssage and Redirecs
             $_SESSION['delete'] = "<div class='error'>Failed to Delete Category.</div><br>";
             //Redirect to Manage Category
-            header('location:'.SITEURL.'admin/manage-category.php');
+            // header('location:'.SITEURL.'admin/manage-category.php');
+            echo "<script>location.href = '".SITEURL."admin/manage-category.php' </script>";
         }
 
  
@@ -60,6 +63,7 @@
     else
     {
         //redirect to Manage Category Page
-        header('location:'.SITEURL.'admin/manage-category.php');
+        // header('location:'.SITEURL.'admin/manage-category.php');
+        echo "<script>location.href = '".SITEURL."admin/manage-admin.php' </script>";
     }
 ?>

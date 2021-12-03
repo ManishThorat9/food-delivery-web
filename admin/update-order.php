@@ -35,12 +35,14 @@
                     $customer_address = $row['customer_address'];
                 }
                 else{
-                    header('location:'.SITEURL."admin/manage-order.php");
+                    // header('location:'.SITEURL."admin/manage-order.php");
+                    echo "<script>location.href = '".SITEURL."admin/manage-order.php' </script>";
                 }
             }
             else{
                 //REdirect to Manage ORder PAge
-                header('location:'.SITEURL.'admin/manage-order.php');
+                // header('location:'.SITEURL.'admin/manage-order.php');
+                echo "<script>location.href = '".SITEURL."admin/manage-order.php' </script>";
             }
 
         ?>
@@ -127,13 +129,15 @@
                 if($res2 == true){
                     //Updated
                     $_SESSION['update'] = "<div class='success'>Order Updated Successfully.</div>";
-                    header('location:'.SITEURL.'admin/manage-order.php');
+                    // header('location:'.SITEURL.'admin/manage-order.php');
+                    echo "<script>location.href = '".SITEURL."admin/manage-order.php' </script>";
                 }
                 else
                 {
                     //Failed to Update
                     $_SESSION['update'] = "<div class='error'>Failed to Update Order.</div>";
-                    header('location:'.SITEURL.'admin/manage-order.php');
+                    // header('location:'.SITEURL.'admin/manage-order.php');
+                    echo "<script>location.href = '".SITEURL."admin/manage-order.php' </script>";
                 }
             }
 
