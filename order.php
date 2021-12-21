@@ -29,7 +29,7 @@
             }
         }
         else{
-            //  ("location:".SITEURL);
+            // header("location:".SITEURL);
             echo "<script>location.href = '".SITEURL."' </script>";
         }?>
     
@@ -39,7 +39,23 @@
             <h2 class="text-center text-white">Fill this form to confirm your order.</h2>
             
             <form action="" class="order" method="POST">
+                
                 <div class="box left">
+                    <!-- <legend>Delivary Details</legend> -->
+                    <div class="order-label">Full Name</div>
+                    <input type="text" name="full-name" placeholder ="E.g. Jhon Doe" class="input-responsive" required>
+                    
+                    <div class="order-label">Phone Number</div>
+                    <input type="tel" name="contact" placeholder ="E.g. 9843xxxxxx" class="input-responsive" required>
+
+                    <div class="order-label">Email</div>
+                    <input type="email" name="email" placeholder ="E.g.Jhon@web.com" class="input-responsive" required>
+
+                    <div class="order-label">Address</div>
+                    <textarea style="resize: none;" name="address" rows="10" placeholder="E.g. Street, City, Country" class="input-responsive" required></textarea>
+                </div>
+
+                <div class="box right">
                     <!-- <legend>Selected Food</legend> -->
 
                     <div class="food-menu-img order-food-img">
@@ -69,42 +85,26 @@
                         <input type="number" name="qty" class="input-responsive" 
                             min=1 max=10 value="1" id='txt-qty' required>
 
-                            <p class="tax-delivery">*Tax : ₹<span id="txt-tax">15</span> &nbsp; *Delivery : ₹<span id="txt-deliver">10</span></p>
+                        <p class="tax-delivery">*Tax : ₹<span id="txt-tax">15</span> &nbsp; *Delivery : ₹<span id="txt-deliver">10</span></p>
 
-                            <span class="payment-mode">Payment Method : </span>
+                        <span class="payment-mode">Payment Method : </span>
 
-                            <select name="payment" id="pay_mode" class="option">
-                                <option value="cod">COD</option>
-                                <option value="online">Online Payment</option>
-                            </select>
+                        <select name="payment" id="pay_mode" class="option">
+                            <option value="cod">COD</option>
+                            <option value="online">Online Payment</option>
+                        </select>
 
                             <!-- <input type="radio" name="payment" id=""> Cod &nbsp;
                             <input type="radio" name="payment" id=""> Online Payment -->
                             
-                            <p class="total">Total : ₹<span id="txt-total">0</span></p>
+                        <p class="total">Total : ₹<span id="txt-total">0</span></p>
 
-                            <div class="text-right">
-                                <input type="submit" name="submit" value="Confirm Order" id="rzp-button1" class="confirm-btn btn btn-primary">
-                            </div>
+                        <div>
+                            <input type="submit" name="submit" value="Confirm Order" id="rzp-button1" class="confirm-btn btn btn-primary">
                         </div>
+                    </div>
                         
                     </div>
-                </div>
-
-                <div class="box right">
-                    <!-- <legend>Delivary Details</legend> -->
-                    <div class="order-label">Full Name</div>
-                    <input type="text" name="full-name" placeholder ="E.g. Jhon Doe" class="input-responsive" required>
-
-                    <div class="order-label">Phone Number</div>
-                    <input type="tel" name="contact" placeholder ="E.g. 9843xxxxxx" class="input-responsive" required>
-
-                    <div class="order-label">Email</div>
-                    <input type="email" name="email" placeholder ="E.g.Jhon@web.com" class="input-responsive" required>
-
-                    <div class="order-label">Address</div>
-                    <textarea style="resize: none;" name="address" rows="10" placeholder="E.g. Street, City, Country" class="input-responsive" required></textarea>
-
                 </div>
                 <div class="clearfix"></div>
             </form>
@@ -168,26 +168,22 @@
             // insert data and goto print reciept page;
 
                 // query to insert data;
-                $sql2 = "INSERT INTO tbl_order SET 
-                    food='$food',
-                    price='$food_price',
-                    qty='$qty',
-                    total='$total',
-                    pay_mode='$payment_mode',
-                    order_date='$order_date', 
-                    status='$status',
-                    customer_name='$customer_name',
-                    customer_contact='$customer_contact',
-                    customer_email='$customer_email',
-                    customer_address='$customer_address'
-                    ";
+                $sql2 = "INSERT INTO tbl_order SET food='$food',price='$food_price',qty='$qty',total='$total',
+                pay_mode='$payment_mode',
+                order_date='$order_date', 
+                status='$status',
+                customer_name='$customer_name',
+                customer_contact='$customer_contact',
+                customer_email='$customer_email',
+                customer_address='$customer_address'";
 
                 // execute query
-                $res2 = mysqli_query($conn, $sql2);
+                $res = mysqli_query($conn, $sql2) or die(mysqli_error($conn));
 
-                if($res2 == false){
+                if($res == false){
+                    echo "<script>alert($res2)</script>";
                     echo "<script>location.href = '".SITEURL."order.php?food_id=$food_id'</script>";
-                    die();
+                    // die();
                 }
 
             // check payment mode is cod or online

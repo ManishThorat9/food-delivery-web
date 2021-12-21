@@ -235,8 +235,8 @@ fieldset{
     display: inline-block;
     height:450px;
 }
-.left{float: right; height:550px; padding: 3%;}
-.right{float: left;margin-top: 50px;}
+.left{float: left; margin-top: 50px;}
+.right{float: right; height:550px; padding: 3%;}
 .order-food-img{
     float: none;
     width: 100%;
@@ -499,6 +499,23 @@ fieldset{
     }
     .md-heading{
         font-size: 1.8rem;
+    }
+    
+    .container h2{
+        font-size: 1rem;
+    }
+
+    .box{
+        display: block;
+        width: 80%;
+        margin: 0 auto;
+        height: auto;
+    }
+    .left{float: none; margin-top: 0px;}
+    .right{float: none; padding: 3%; margin-top: 20px;}
+
+    .order-food-img {
+        height: 25%;
     }
 
 }

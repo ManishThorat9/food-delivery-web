@@ -70,7 +70,7 @@
                 $from = "nipaneeducation@gmail.com";
                 $headers = "From : $from";
 
-                mail($to, $subject, $message, $headers);
+                // mail($to, $subject, $message, $headers);
 
                 // echo "Mail Sent";
 
