@@ -126,7 +126,7 @@
                         $source_path = $_FILES['image']['tmp_name'];
 
                         $destination_path = "../images/category/".$image_name;
-
+                        // echo "<script>console.log('".$source_path.' '.$destination_path."')</script>";
                         //Finally Upload the Image
                         $upload = move_uploaded_file($source_path, $destination_path);
 
@@ -169,7 +169,7 @@
                     $_SESSION['add'] = "<div class='success'>Category Added Successfully.</div><br>";
                     //Redirect to Manage Category Page
                     // header('location:'.SITEURL.'admin/manage-category.php');
-                    echo "<script>location.href = '".SITEURL."admin/add-category.php' </script>";
+                    echo "<script>location.href = '".SITEURL."admin/manage-category.php' </script>";
                 }
                 else
                 {
@@ -180,7 +180,6 @@
                     echo "<script>location.href = '".SITEURL."admin/add-category.php' </script>";
                 }
             }
-        
         ?>
 
     </div>

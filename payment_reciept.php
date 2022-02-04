@@ -51,6 +51,13 @@
                 $final_amt = $row['total'];
                 $pay_mode = $row['pay_mode'];
                 $order_date = $row['order_date'];
+
+                // date time extraction in php important
+                $dt = new DateTime($order_date);
+                $date = $dt->format('m/d/Y');
+                $time = $dt->format('h:i:s');
+                
+                // echo $date, ' | ', $time;
                 // // customer info
                 $customer_name = $row['customer_name'];
                 $customer_contact = $row['customer_contact'];

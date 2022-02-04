@@ -157,7 +157,8 @@
             $qty = $_POST['qty'];
             $total = ($food_price * $qty) + 10 + 15;   // 10 for deliver and 15 for tax
             $payment_mode = $_POST['payment'];
-            $order_date = date("d-m-y h:i:s"); // order date
+            date_default_timezone_set('Asia/Calcutta');
+            $order_date = date("Y-m-d h:i:s a", time()); // order date
             $status = "Ordered";  // ordered , on delivery, delivered, canceled
             // getting customer details
             $customer_name = $_POST['full-name'];
