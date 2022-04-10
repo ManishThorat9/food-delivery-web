@@ -136,7 +136,7 @@
 
             //REdirect to HOme Page/Dashboard
             // header('location:'.SITEURL.'admin/');
-            echo "<script>location.href = '".SITEURL."admin/' </script>";
+            echo "<script>location.href = '".SITEURL."admin/index.php' </script>";
         }
         else
         {

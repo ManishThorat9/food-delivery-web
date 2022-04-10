@@ -28,7 +28,7 @@
                 <h1 class="lg-heading text-black">Contact Us</h1>
                 <p class="text-grey">Let us know your questions. Suggestions and concerns by filling out the contact form below.</p>
                 <div class="form-group">
-                    <label for="username">Username</label>
+                    <label for="username">Name</label>
                     <input type="text" name="username" id="username" required>
                 </div>
                 <div class="form-group">
@@ -61,11 +61,12 @@
 
         $owner_mail = "nipaneeducation@gmail.com";
         $to = $owner_mail;
+        $from = "aaryan28102002@gmail.com";
         $subject = "Customer Question";
         $msg = "Message from $username is \n $message \n details of $username \n phone : $phone \n email : $email";
         $headers = "From : $from";
 
-        // mail($to, $subject, $msg, $headers);
+        mail($to, $subject, $msg, $headers);
 
 
         // sql query to insert data in table

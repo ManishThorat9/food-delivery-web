@@ -27,9 +27,13 @@
         <div class="container text-center">
             <p>All rights reserved. Designed By <a href="#">Advance Learner</a></p>
         </div>
-    </section>
-    <!-- footer Section Ends Here -->
+</section>
+<!-- footer Section Ends Here -->
+
 
     
 </body>
 </html>
+<script src="<?php echo SITEURL;?>config/remove-add.js">
+    console.log("Hello js");
+</script>

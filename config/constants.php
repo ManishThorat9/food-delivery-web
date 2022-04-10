@@ -4,7 +4,13 @@
     session_start();
 
     // create constants to store non-repeating values
-    define('SITEURL', 'http://localhost/FOOD-DELIVERY-WEB/');
+    // define('SITEURL', 'https://food-order-web.000webhostapp.com/');
+    // define('LOCALHOST', 'localhost');
+    // define('USERNAME', 'id18045339_root');
+    // define('PASSWORD', 'vM(6xwFpLp5R{j$1');
+    // define('DB_NAME', 'id18045339_food_delivary_food');
+
+    define('SITEURL', 'http://localhost/LATEST-FOOD-ORDER-WEB/');
     define('LOCALHOST', 'localhost');
     define('USERNAME', 'root');
     define('PASSWORD', '');

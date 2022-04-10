@@ -9,7 +9,7 @@
 <html>
     <head>
         <title>Food Order Website - Home Page</title>
-        <link rel="shortcut icon" href="<?php echo SITEURL?>images/icon/logo2.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="<?php echo SITEURL?>images/icon/logo.ico" type="image/x-icon">
         <link rel="stylesheet" href="../css/admin.css">
     </head>
     

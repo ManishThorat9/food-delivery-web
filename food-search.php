@@ -80,12 +80,12 @@
                                 </div>
                                 <div class="food-menu-desc">
                                     <h4><?php echo $title;?></h4>
-                                    <p class="food-price">$<?php echo $price;?></p>
+                                    <p class="food-price">₹<?php echo $price;?></p>
                                     <p class="food-detail">
                                     <?php echo $description;?>
                                     </p>
                                     <br>
-                                    <a href="<?php echo SITEURL; ?>order.html?food_id=<?php echo $id;?>" class="btn btn-primary">Order Now</a>
+                                    <a href="<?php echo SITEURL; ?>order.php?food_id=<?php echo $id;?>" class="btn btn-primary">Order Now</a>
                                 </div>
                             </div><?php
 

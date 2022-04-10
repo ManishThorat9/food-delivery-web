@@ -8,3 +8,4 @@
 
     </body>
 </html>
+<script src="<?php echo SITEURL;?>config/remove-add.js"></script>

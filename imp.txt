@@ -1,0 +1,3 @@
+TO CREATE .SQL FILE :- 
+
+In your command prompt (NOT mySQL command line): Use $ mysqldump -u <username> -p<passwprd> db_name > db_backup. sql in order to dump the entire database on to an SQL file from the command line

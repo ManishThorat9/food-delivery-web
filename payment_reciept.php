@@ -51,13 +51,6 @@
                 $final_amt = $row['total'];
                 $pay_mode = $row['pay_mode'];
                 $order_date = $row['order_date'];
-
-                // date time extraction in php important
-                $dt = new DateTime($order_date);
-                $date = $dt->format('m/d/Y');
-                $time = $dt->format('h:i:s');
-                
-                // echo $date, ' | ', $time;
                 // // customer info
                 $customer_name = $row['customer_name'];
                 $customer_contact = $row['customer_contact'];
@@ -70,7 +63,8 @@
 
 
                 // send email in php
-                $owner_mail = "aaryan28102002@gmail.com, tjaiswal889@gmail.com";
+                // $owner_mail = "aaryan28102002@gmail.com, tjaiswal889@gmail.com";
+                $owner_mail = "aaryan28102002@gmail.com";
                 $to = ''.$customer_email.','.$owner_mail;
                 $subject = "Food Order";
                 $message = "Name : ".$customer_name."\nPhone No : ".$customer_contact."\nOrder Food : ".$food_title."\nQty : ".$qty."\nPrice : ".$food_price."\nTotal Amt : ".$final_amt."(Including Tax)\nPayment Mode : ".$pay_mode."";
