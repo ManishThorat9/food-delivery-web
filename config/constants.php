@@ -10,7 +10,7 @@
     // define('PASSWORD', 'vM(6xwFpLp5R{j$1');
     // define('DB_NAME', 'id18045339_food_delivary_food');
 
-    define('SITEURL', 'http://localhost/LATEST-FOOD-ORDER-WEB/');
+    define('SITEURL', 'http://localhost/FOOD-DELIVERY-WEB/');
     define('LOCALHOST', 'localhost');
     define('USERNAME', 'root');
     define('PASSWORD', '');
