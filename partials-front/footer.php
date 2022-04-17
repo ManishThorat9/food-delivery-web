@@ -25,7 +25,7 @@
 <!-- footer Section Starts Here -->
 <section class="footer">
         <div class="container text-center">
-            <p>All rights reserved. Designed By <a href="#">Advance Learner</a></p>
+            <p>All rights reserved. Designed By <a href="<?php echo SITEURL?>">Advance Learner</a></p>
         </div>
 </section>
 <!-- footer Section Ends Here -->

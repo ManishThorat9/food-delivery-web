@@ -19,6 +19,11 @@
             unset($_SESSION['order']);
         }
 
+        if(isset($_SESSION['log_success'])){
+            echo "<script>alert('Login Successfull')</script>";
+            unset($_SESSION['log_success']);
+        }
+
     ?>
 
     <!-- categories  Section starts Here -->

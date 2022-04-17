@@ -68,7 +68,7 @@ function loginUser($conn, $username, $userpwd){
         $_SESSION['userid'] = $uidExists['usersid'];
         $_SESSION['useruid'] = $uidExists['usersuid'];
 
-
+        $_SESSION['log_success'] = "success";
         header('location:'.SITEURL.'index.php');
         exit();
     }

@@ -34,6 +34,19 @@
     </div>
 </section>
 
+<?php 
+
+    if(isset($_GET['m'])){
+        $m  = $_GET['m'];
+
+        if($m == "usernameTaken"){
+            echo "<script>alert('username / Email already taken \\nSignup with different username / Email')</script>";
+            // echo "Hello";
+        }
+    }
+
+?>
+
 <?php include_once "./partials-front/footer.php" ?>
 
 

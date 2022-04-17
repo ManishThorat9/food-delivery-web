@@ -2,6 +2,7 @@
 
 <script src="https://kit.fontawesome.com/0777c0d9d6.js" crossorigin="anonymous"></script>
 
+
 <section class="login-section">
     <div class="container">
     <form action="./includes/login.inc.php" class="login-form" method="post">
@@ -21,5 +22,20 @@
             </form>
     </div>
 </section>
+
+
+<?php 
+    if(isset($_GET['m'])){
+        $m = $_GET['m'];
+
+        if($m == "userNotFound"){
+            echo "<script>alert('user not found');</script>";
+        }
+        elseif($m == "wrongPwd"){
+            echo "<script>alert('Wrong Password');</script>";
+        }
+
+    }
+?>
 
 <?php include_once "./partials-front/footer.php" ?>
